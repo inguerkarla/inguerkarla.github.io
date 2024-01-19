@@ -9,7 +9,6 @@
             location.href = "about.html"
         });
         let MainContent =document.getElementsByTagName("main")[0];
-
         let MainParagraph =document.createElement("p");
 
         MainParagraph.setAttribute("id", "MainParagraph");
@@ -20,6 +19,7 @@
 
         let FirstString = "This is";
         let SecondString = `${FirstString} the main paragraph`;
+        
         MainParagraph.textContent = SecondString;
         MainContent.appendChild(MainParagraph);
 
@@ -29,8 +29,6 @@
         Article.setAttribute("class", "container");
         Article.innerHTML = ArticleParagraph;
         DocumentBody.appendChild(Article);
-
-
 
     }
 
