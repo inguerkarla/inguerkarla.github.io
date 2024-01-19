@@ -19,7 +19,7 @@
         MainContent.appendChild(MainParagraph);
 
         let FirstString = "This is";
-        let SecondString = `${FirstString}the main paragraph`;
+        let SecondString = `${FirstString} the main paragraph`;
         MainParagraph.textContent = SecondString;
         MainContent.appendChild(MainParagraph);
 
