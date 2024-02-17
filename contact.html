@@ -1,132 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Fathima Bukharif & Inguer Lara">
-    <title>Contact</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Inguer Lara">
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Contact Us</title>
 
+    <!** CSS Section -->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.css">
     <link rel="stylesheet" href="./content/app.css">
 
 </head>
-<body class="d-flex flex-column h-100">
+<body>
+<header></header>
 
-<!--header-->
 <div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-        <a href="/"
-           class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                <i class="bi bi-boxes"></i>
+    <h1>Contact Us</h1>
+
+    <div id="messageArea"></div>
+
+    <div class="row justify-content-lg-center g-3">
+
+        <form class="col-lg-6 col-md-4 col-sm-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Full Name</span>
+                <input id="fullName" name="fullName" type="text" class="form-control"
+                       aria-describedby="Full Name" aria-label="Full Name Input" required>
             </div>
-            <span class="fs-4">Harmony Hub</span>
-        </a>
 
-        <ul class="nav nav-pills" id="navigation-links">
-        </ul>
-    </header>
-</div>
 
-<!--content-->
-<main class="flex-shrink-0">
-    <section class="py-2 text-center container">
-        <div class="row py-lg-4">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Contact Us</h1>
+            <form class="col-lg-6 col-md-4 col-sm-4">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Contact Number</span>
+                    <input id="contactNumber" name="contactNumber" type="tel" class="form-control"
+                           aria-describedby="Contact Number" aria-label="Contact Number Input" required>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Email Address</span>
+                    <input id="emailAddress" name="emailAddress" type="email" class="form-control"
+                           aria-describedby="Email Address" aria-label="Email Address Input" required>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Your Message</span>
+                    <input id="message" name="message" class="form-control"
+                           aria-describedby="Message Area" aria-label="Message Area Input" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input id="subscribeCheckbox" name="subscribeCheckbox" type="checkbox" class="form-check-input">
+                    <label class="form-check-label" for="subscribeCheckbox">Subscribe to our Contact List</label>
+                </div>
+                <button id="sendButton" type="submit" class="btn btn-primary"><i class="fa-solid fa-envelope"></i>Submit
+                </button>
+                <button id="cancelButton" type="reset" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i>Cancel
+                </button>
+
+            </form>
+
+            <div class="col-lg-4 col-md-4">
+                <a href="contact-list.html" class="btn btn-primary"><i class="fa-solid fa-users"></i>Show Contact List</a>
             </div>
-        </div>
-    </section>
-    <div class="container">
-        <div class="row">
-            <div class="mx-auto col-7">
-                <h4 class="mb-3">Contact Form</h4>
-                <form class="needs-validation" novalidate id="contact-form">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <label for="firstName" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder value required>
-                            <div class="invalid-feedback">
-                                Valid first name is required.
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <label for="lastName" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder value required>
-                            <div class="invalid-feedback">
-                                Valid last name is required.
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com" value required>
-                            <div class="invalid-feedback">
-                                Please enter a valid email address
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="subject" placeholder value required>
-                            <div class="invalid-feedback">
-                                Please enter a subject
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" placeholder required rows="6"></textarea>
-                            <div class="invalid-feedback">
-                                Please enter a message
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <hr class="my-4">
-
-                    <button class="w-100 btn btn-primary btn-lg mb-5" type="submit">Submit</button>
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
-</main>
 
-<!--footer-->
-<div class="mt-auto container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 mb-4 border-top">
-        <p class="col-md-4 mb-0 text-body-secondary">© 2023 Harmony Hub, Inc</p>
-        <ul class="nav col-md-8 justify-content-end" id="footer-links">
-        </ul>
-    </footer>
 </div>
 
 
-<div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="form-modal-label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="form-modal-label">Form Submitted</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="form-modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--scripts-->
+<!-- Scripting Section -->
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="scripts/app.js"></script>
+<script src="scripts/namespace.js"></script>
 <script src="scripts/contact.js"></script>
-<script src="scripts/project.js"></script>
+<script src="scripts/app.js"></script>
 </body>
 </html>
