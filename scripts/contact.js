@@ -1,71 +1,57 @@
 "use strict";
 
-(function (core) {
+/**
+ * Contact class for the contact form
+ */
+class Contact {
 
-    class Contact {
-
-        constructor(fullName = "", contactNumber = "", emailAddress = "") {
-            this._fullName = fullName;
-            this._contactNumber = contactNumber;
-            this._emailAddress = emailAddress;
-        }
-
-        get fullName() {
-            return this._fullName;
-        }
-
-        set fullName(value) {
-            this._fullName = value;
-        }
-
-        get contactNumber() {
-            return this._contactNumber;
-        }
-
-        set contactNumber(value) {
-            this._contactNumber = value;
-        }
-
-        get emailAddress() {
-            return this._emailAddress;
-        }
-
-        set emailAddress(value) {
-            this._emailAddress = value;
-        }
-
-        toString() {
-            return ` Full Name: ${this._fullName}\n 
-                    Contact Number: ${this._contactNumber}\n 
-                    Email Address: ${this._emailAddress}`
-        }
-
-        /**
-         Serialize for writing to local Storage
-         */
-        serialize() {
-            if (this._fullName !== "" && this._contactNumber !== "" && this._emailAddress !== "") {
-                return `${this.fullName}, ${this.contactNumber}, ${this.emailAddress}`;
-            }
-            console.error(`One or more of the contact properties is missing`);
-            return null;
-        }
-
-        /**
-         * Deserialize is used to read data from localStorage
-         */
-        deserialize(data) {
-
-            let propertyArray = data.split(",");
-            this._fullName = propertyArray[0];
-            this._contactNumber = propertyArray[1];
-            this._emailAddress = propertyArray[2];
-
-        }
-
+    constructor(firstName, lastName, email, subject, message, address, phone) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._email = email;
+        this._subject = subject;
+        this._message = message;
+        this._address = address;
+        this._phone = phone;
     }
 
-    //namespace definition
-    core.Contact = Contact;
-})(core || (core = {}));
+    /**
+     * Get concatenated full name
+     * @returns {string}
+     */
+    getFullName() {
+        return `${this._firstName} ${this._lastName}`
+    }
 
+    /**
+     * Returns elements for modal body displaying all the objects properties
+     * @returns {Node[]}
+     */
+    toFormModalBody() {
+
+        const elements = [];
+
+        const nameParagraph = document.createElement("p");
+        nameParagraph.appendChild(
+            document.createTextNode(`Thank you for submitting your request ${this.getFullName()} for subject '${this._subject}' which contains the following message:`))
+        elements.push(nameParagraph);
+
+        const messageParagraph = document.createElement("p");
+        messageParagraph.innerHTML = `<i>${this._message}</i>`;
+        elements.push(messageParagraph);
+
+        const emailParagraph = document.createElement("p");
+        emailParagraph.innerHTML = `A response will be returned to you shortly by our staff to the email you specified, ${this._email}.`;
+        elements.push(emailParagraph);
+
+        const addressParagraph = document.createElement("p");
+        addressParagraph.innerHTML = `Address: ${this._address}`;
+        elements.push(addressParagraph);
+
+        const phoneParagraph = document.createElement("p");
+        phoneParagraph.innerHTML = `Phone: ${this._phone}`;
+        elements.push(phoneParagraph);
+
+        return elements;
+    }
+}
